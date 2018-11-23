@@ -189,7 +189,7 @@ func LoadFromData(data []byte) (c *ConfigFile, err error) {
 		return nil, err
 	}
 
-	c = newConfigFile([]string{tmpName})
+	c = NewConfigFile([]string{tmpName})
 	err = c.read(bytes.NewBuffer(data))
 	return c, err
 }
@@ -199,7 +199,7 @@ func LoadFromData(data []byte) (c *ConfigFile, err error) {
 // You must use ReloadData to reload.
 // You cannot append files a configfile read this way.
 func LoadFromReader(in io.Reader) (c *ConfigFile, err error) {
-	c = newConfigFile([]string{""})
+	c = NewConfigFile([]string{""})
 	err = c.read(in)
 	return c, err
 }
@@ -224,7 +224,7 @@ func LoadConfigFile(fileName string, moreFiles ...string) (c *ConfigFile, err er
 		fileNames = append(fileNames, moreFiles...)
 	}
 
-	c = newConfigFile(fileNames)
+	c = NewConfigFile(fileNames)
 
 	for _, name := range fileNames {
 		if err = c.loadFile(name); err != nil {

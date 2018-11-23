@@ -66,8 +66,8 @@ type ConfigFile struct {
 	BlockMode       bool                         // Indicates whether use lock or not.
 }
 
-// newConfigFile creates an empty configuration representation.
-func newConfigFile(fileNames []string) *ConfigFile {
+// NewConfigFile creates an empty configuration representation.
+func NewConfigFile(fileNames []string) *ConfigFile {
 	c := new(ConfigFile)
 	c.fileNames = fileNames
 	c.data = make(map[string]map[string]string)
